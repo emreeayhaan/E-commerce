@@ -1,0 +1,49 @@
+﻿@using Data.Dto
+@model Tuple<List<CategoryDto>, List<ProductDtoForShop>>
+
+@{
+}
+
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        @foreach (var obj in Model.Item1)
+                        {
+                            <li data-filter=".@obj.CategoryId">@obj.CategoryName</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-lists">
+            @foreach (var obj in Model.Item2)
+            {
+                if (obj.ProductStock > 0)
+                {
+                    <div class="col-lg-4 col-md-6 text-center @obj.CategoryId">
+                        <div class="single-product-item">
+                            <div class="product-image">
+                                <a asp-controller="Shop" asp-action="SingleProduct" asp-route-id="@obj.ProductId"><img src="data:image/png;base64,@obj.ProductImageBase64"></a>
+                            </div>
+                            <h3>@obj.ProductName</h3>
+                            <p class="product-price">@obj.ProductPrice$ </p>
+                            <a asp-controller="Shop" asp-action="AddToCart" asp-route-id="@obj.ProductId" class="cart-btn">Add to Cart</a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

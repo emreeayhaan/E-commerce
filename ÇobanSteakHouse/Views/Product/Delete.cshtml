@@ -1,0 +1,56 @@
+﻿@using Data.Models
+@model Product
+
+@{
+}
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Product</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductImageBase64"></label>
+            <img class="form-control" style="width:500px;height:500px" src="data:image/png;base64,@Model.ProductImageBase64">
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductId"></label>
+            <input asp-for="ProductId" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductDescription"></label>
+            <input asp-for="ProductDescription" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductPrice"></label>
+            <input asp-for="ProductPrice" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductStock"></label>
+            <input asp-for="ProductStock" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <input asp-for="CategoryId" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastUpdatedTime"></label>
+            <input asp-for="LastUpdatedTime" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back To List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

@@ -1,0 +1,57 @@
+﻿@using Data.Models
+@model List<Category>
+
+@{
+}
+
+<div class="container p3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Categories</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Add" class="btn btn-primary">
+                <i class="bi bi-patch-plus"></i> Add Category
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Category Id
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Category Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.CategoryId
+                </td>
+                <td>
+                    @obj.CategoryName
+                </td>
+                <td>
+                    <div class="w-70 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Update" asp-route-id="@obj.Id"
+                       class="btn btn-primary mx-2"> <i class="bi bi-pen"></i> Edit</a>
+                    </div>
+                    <div class="w-70 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                       class="btn btn-danger mx-2"> <i class="bi bi-trash3-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 

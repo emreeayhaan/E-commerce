@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "+tY/XN/cL+z2NY1fGVfG7B6BxuZefqZImBRp5eWMZMh1R9zxOu/AYk6hBTFag68Uhq9b83CXj689zDxWNaZ3AA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Acer\\source\\repos\\ÇobanKasabıWeb\\Data\\Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\mongodb.bson\\2.18.0\\mongodb.bson.2.18.0.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

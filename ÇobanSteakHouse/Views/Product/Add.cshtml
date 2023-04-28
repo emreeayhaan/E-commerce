@@ -1,0 +1,57 @@
+﻿@using Data.Dto
+@model ProductDtoForAdd
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Product</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductId"></label>
+            <input asp-for="ProductId" class="form-control" />
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName" class="form-control" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductDescription"></label>
+            <input asp-for="ProductDescription" class="form-control" />
+            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductPrice"></label>
+            <input asp-for="ProductPrice" class="form-control" />
+            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductStock"></label>
+            <input asp-for="ProductStock" class="form-control" />
+            <span asp-validation-for="ProductStock" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <input asp-for="CategoryId" class="form-control" />
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductFile"></label>
+            <input type="file" asp-for="ProductFile" class="form-control" />
+            <span asp-validation-for="ProductFile" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Add</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

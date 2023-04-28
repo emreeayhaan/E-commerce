@@ -1,0 +1,30 @@
+﻿@using Data.Dto
+@model LoginDto
+@{
+}
+
+
+<form method="post" asp-action="Login" style="margin-top:20%">
+    <div class="border p-3 mt-4" style="width:30%;height:100%; margin : 0px auto; vertical-align:middle">
+        <div class="mb-3">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Login</button>
+        <a asp-action="Register" class="btn btn-secondary" style="width:150px;margin-left:15.5%">
+            Register
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }

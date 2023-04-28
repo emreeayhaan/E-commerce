@@ -1,0 +1,33 @@
+﻿@using Data.Dto
+@model ProductDtoForShop
+
+@{
+    string color = Model.ProductStock < 5 ? "red" : "black"; ;
+}
+
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+
+<div class="single-product mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="data:image/png;base64,@Model.ProductImageBase64">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h3>@Model.ProductName</h3>
+                    <p class="single-product-pricing">$@Model.ProductPrice</p>
+                    <p>@Model.ProductDescription</p>
+                    <p style=color:@color>Number of products remaining in stock @Model.ProductStock</p>
+                    <a asp-controller="Shop" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

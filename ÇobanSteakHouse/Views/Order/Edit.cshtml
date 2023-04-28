@@ -1,0 +1,40 @@
+﻿@using Data.Dto
+@model OrderDto
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Manager</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderId"></label>
+            <div class="form-control">@Model.OrderId</div>
+            <input asp-for="OrderId" style="display:none" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderTime"></label>
+            <div class="form-control">@Model.OrderTime</div>
+            <input asp-for="OrderTime" style="display:none" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderStatus"></label>
+        </div>
+        <div class="mb-3">
+            Taken @Html.RadioButtonFor(x=>x.OrderStatus, 0)
+            Preparing @Html.RadioButtonFor(x=>x.OrderStatus, 1)
+            Prepared @Html.RadioButtonFor(x=>x.OrderStatus, 2)
+            Sent @Html.RadioButtonFor(x=>x.OrderStatus, 3)
+            Delivered @Html.RadioButtonFor(x=>x.OrderStatus, 4)
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Order" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back To List
+        </a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

@@ -1,0 +1,69 @@
+﻿@using Data.Models
+@model List<Manager>
+
+@{
+}
+
+<div class="container p3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Managers</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Manager" asp-action="Add" class="btn btn-primary">
+                <i class="bi bi-patch-plus"></i> Add Manager
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Manager Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.ManagerId
+                </td>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Email
+                </td>
+                <td>
+                    @obj.Password.Replace(obj.Password, "".PadLeft(obj.Password.Length, '*'))
+                </td>
+                <td>
+                    <div class="w-70 btn-group" role="group">
+                        <a asp-controller="Manager" asp-action="Update" asp-route-id="@obj.Id"
+                       class="btn btn-primary mx-2"> <i class="bi bi-pen"></i> Edit</a>
+                    </div>
+                    <div class="w-70 btn-group" role="group">
+                        <a asp-controller="Manager" asp-action="Delete" asp-route-id="@obj.Id"
+                       class="btn btn-danger mx-2"> <i class="bi bi-trash3-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 

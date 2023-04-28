@@ -1,0 +1,92 @@
+﻿@using Data.Dto
+@model CartDto
+
+@{
+    int shippingPrice = 25;
+    double totalProductPrice = 0.0;
+    foreach (var obj in Model.ProductList)
+    {
+        totalProductPrice += obj.ProductPrice * obj.ProductStock;
+    }
+    double totalPrice = shippingPrice + totalProductPrice;
+}
+
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th class="product-remove"></th>
+                                <th class="product-image">Product Image</th>
+                                <th class="product-name">Name</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var obj in Model.ProductList)
+                            {
+                                <tr class="table-body-row">
+                                    <td class="product-remove"><a asp-controller="Shop" asp-action="DeleteFromDatabase" asp-route-id="@obj.ProductId">X</a></td>
+                                    <td class="product-image"><img src="data:image/png;base64,@obj.ProductImageBase64"></td>
+                                    <td class="product-name">@obj.ProductName</td>
+                                    <td class="product-price">$@obj.ProductPrice</td>
+                                    <td class="product-quantity">@obj.ProductStock</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="total-section">
+                    <table class="total-table">
+                        <thead class="total-table-head">
+                            <tr class="table-total-row">
+                                <th>Total</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="total-data">
+                                <td><strong>Subtotal: </strong></td>
+                                <td>$@totalProductPrice</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Shipping: </strong></td>
+                                <td>$@shippingPrice</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Total: </strong></td>
+                                <td>$@totalPrice</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <a asp-controller="Shop" asp-action="Buy" class="cart-btn">Buy Now</a>
+                    </div>
+                </div>
+
+                <div class="coupon-section">
+                    <h3>Apply Coupon</h3>
+                    <div class="coupon-form-wrap">
+                        <form action="index.html">
+                            <p><input type="text" placeholder="Coupon"></p>
+                            <p><input type="submit" value="Apply"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿@using Data.Dto
+@model List<OrderDto>
+
+@{
+}
+
+<div class="container p3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Orders</h2>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Order Id
+            </th>
+            <th>
+                Product Picture
+            </th>
+            <th>
+                Order Details
+            </th>
+            <th>
+                Order Status
+            </th>
+            <th>
+                Order Time
+            </th>
+            <th>
+                Edit Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.OrderId
+                </td>
+                <td>
+                    @foreach (var item in obj.ProductList)
+                    {
+                        <img style="width:150px;height:150px" src="data:image/png;base64,@item.ProductImageBase64">
+                    }
+                </td>
+                <td>
+                    @foreach (var item in obj.ProductList)
+                    {
+                        <div>@item.ProductStock of the @item.ProductName were bought for $@item.ProductPrice each.</div>
+                    }
+                </td>
+                <td>
+                    @obj.OrderStatus
+                </td>
+                <td>
+                    @obj.OrderTime
+                </td>
+                <td>
+                    <div class="w-70 btn-group" role="group">
+                        <a asp-controller="Order" asp-action="Edit" asp-route-id="@obj.OrderId"
+                       class="btn btn-primary mx-2"> <i class="bi bi-pen"></i> Edit</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
